@@ -39,6 +39,7 @@ requirements:
     - {{ posix }}sed
     - swig
     # cross-compilation requirements
+    - lua                                 # [build_platform != target_platform]
     - perl                                # [build_platform != target_platform]
     - python                              # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
