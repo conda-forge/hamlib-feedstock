@@ -67,7 +67,7 @@ else
     )
 fi
 
-if [[ $build_platform != $target_platform ]]; then
+if [[ "$build_platform" != "" && "$build_platform" != "$target_platform" ]]; then
     # need to point to native lua in the build prefix so autoconf test works
     configure_args+=(
         LUA="$BUILD_PREFIX/bin/lua"
