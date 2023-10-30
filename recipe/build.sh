@@ -67,6 +67,13 @@ else
     )
 fi
 
+if [[ $build_platform != $target_platform ]]; then
+    # need to point to native lua in the build prefix so autoconf test works
+    configure_args+=(
+        LUA="$BUILD_PREFIX/bin/lua"
+    )
+fi
+
 if [[ "$target_platform" == osx-* ]]; then
     # temporary fix until https://github.com/conda-forge/perl-feedstock/pull/63
     sed -i "/^lddlflags/ s|,|-rpath |g" $core_perl_dir/Config_heavy.pl
