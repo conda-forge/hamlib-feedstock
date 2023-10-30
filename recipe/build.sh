@@ -78,7 +78,7 @@ if [[ "$target_platform" == osx-* ]]; then
 fi
 
 # update configure script following patching
-autoreconf -i
+autoreconf --force --install --verbose
 
 ./configure "${configure_args[@]}" || (cat config.log; false)
 
