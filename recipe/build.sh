@@ -59,7 +59,13 @@ if [[ "$target_platform" == win-* ]]; then
         PYTHON_EXTRA_LDFLAGS=" "
         #--with-perl-inc="$PREFIX/lib/CORE"
     )
+elif [[ "$build_platform" != "$target_platform" ]]; then
+    # need to point to native lua in the build prefix so autoconf test works
+    configure_args+=(
+        LUA="$BUILD_PREFIX/bin/lua"
+    )
 else
+    # enable perl bindings only for non-cross-compiled, non-windows builds
     core_perl_dir="$(perldir="$PREFIX/lib/perl*/*/core_perl"; echo $perldir)"
     configure_args+=(
         --with-perl-binding
@@ -67,14 +73,7 @@ else
     )
 fi
 
-if [[ "$build_platform" != "" && "$build_platform" != "$target_platform" ]]; then
-    # need to point to native lua in the build prefix so autoconf test works
-    configure_args+=(
-        LUA="$BUILD_PREFIX/bin/lua"
-    )
-fi
-
-if [[ "$target_platform" == osx-* ]]; then
+if [[ "$target_platform" == osx-64 ]]; then
     # temporary fix until https://github.com/conda-forge/perl-feedstock/pull/63
     sed -i "/^lddlflags/ s|,|-rpath |g" $core_perl_dir/Config_heavy.pl
     build_core_perl_dir="$(perldir="$BUILD_PREFIX/lib/perl*/*/core_perl"; echo $perldir)"
@@ -113,7 +112,7 @@ fi
 
 make V=1
 
-if [[ "$target_platform" != win-* ]]; then
+if [[ "$target_platform" != win-* && "$build_platform" == "$target_platform" ]]; then
     pushd bindings
     # fix to link perl bindings with host libs
     sed -i "s|-L$BUILD_PREFIX|-L$PREFIX|g" Hamlib-pl.mk
