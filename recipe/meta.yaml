@@ -38,11 +38,15 @@ requirements:
     - posix  # [win]
     - {{ posix }}sed
     - swig
+    # cross-compilation requirements
+    - lua                                 # [build_platform != target_platform]
+    - python                              # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
   host:
     - libusb
     - libxml2
     - lua
-    - perl  # [not win]
+    - perl  # [not win and build_platform == target_platform]
     - python
     - readline  # [unix]
     - tk
@@ -150,6 +154,7 @@ outputs:
   - name: hamlib-perl
     build:
       skip: true  # [win]
+      skip: true  # [build_platform != target_platform]
       run_exports:
         - {{ pin_subpackage('libhamlib' + soversion, max_pin=False) }}
     requirements:
@@ -174,6 +179,8 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        # conda-build needs native python to make .pyc files
+        - python  # [build_platform != target_platform]
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
         - python
@@ -222,7 +229,7 @@ outputs:
         - __win  # [win]
         - hamlib {{ version }}
         - hamlib-lua {{ version }}
-        - hamlib-perl {{ version }}  # [unix]
+        - hamlib-perl {{ version }}  # [not win and build_platform == target_platform]
         - hamlib-python {{ version }}
         - hamlib-tcl {{ version }}
     test:
