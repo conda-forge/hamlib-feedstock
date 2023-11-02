@@ -1,6 +1,6 @@
 {% set version = "4.5.5" %}
 {% set soversion = "4" %}
-{% set build = 1 %}
+{% set build = 2 %}
 {% set posix = 'm2-' if win else '' %}
 {% set library = "Library/" if win else "" %}
 
@@ -219,17 +219,19 @@ outputs:
   - name: hamlib-all
     build:
       noarch: generic
-      string: "unix_{{ build }}"  # [unix]
+      string: "linux_{{ build }}"  # [linux]
+      string: "osx_{{ build }}"  # [osx]
       string: "win_{{ build }}"  # [win]
       run_exports:
         - {{ pin_subpackage('libhamlib' + soversion, max_pin=False) }}
     requirements:
       run:
-        - __unix  # [unix]
+        - __linux  # [linux]
+        - __osx  # [osx]
         - __win  # [win]
         - hamlib {{ version }}
         - hamlib-lua {{ version }}
-        - hamlib-perl {{ version }}  # [not win and build_platform == target_platform]
+        - hamlib-perl {{ version }}  # [not win and not osx]
         - hamlib-python {{ version }}
         - hamlib-tcl {{ version }}
     test:
