@@ -28,5 +28,5 @@ index e5bdfc41..05d8e83f 100644
  AC_SUBST([AM_CPPFLAGS])
  AC_SUBST([AM_CFLAGS])
 -- 
-2.40.0
+2.42.0
 

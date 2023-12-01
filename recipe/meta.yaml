@@ -17,6 +17,7 @@ source:
     - 0003-rig.h-Define-hamlib_port-using-HAVE_WINDOWS_H-to-mat.patch
     - 0004-Add-include-guards-to-hamlib-config.h.patch
     - 0005-Fix-binding-compilation-on-Windows.patch
+    - 0006-Add-missing-stdlib.h-include-needed-after-libxml2-2..patch
 
 build:
   number: {{ build }}
