@@ -1,6 +1,6 @@
 {% set version = "4.5.5" %}
 {% set soversion = "4" %}
-{% set build = 2 %}
+{% set build = 3 %}
 {% set posix = 'm2-' if win else '' %}
 {% set library = "Library/" if win else "" %}
 
