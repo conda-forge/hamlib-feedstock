@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ryan Volz <ryan.volz@gmail.com>
+Date: Fri, 1 Dec 2023 16:36:21 -0500
+Subject: [PATCH] Add missing stdlib.h include, needed after libxml2 2.12
+ header change.
+
+---
+ tests/memload.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tests/memload.c b/tests/memload.c
+index 6157a08a..edeca993 100644
+--- a/tests/memload.c
++++ b/tests/memload.c
+@@ -24,6 +24,8 @@
+ #include <hamlib/rig.h>
+ #include "misc.h"
+ 
++#include <stdlib.h>
++
+ #ifdef HAVE_XML2
+ #  include <libxml/parser.h>
+ #  include <libxml/tree.h>
+-- 
+2.42.0
+

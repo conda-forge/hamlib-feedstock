@@ -30,5 +30,5 @@ index 37f85267..cbbda8f5 100644
      hamlib_async_pipe_t *sync_data_error_pipe;   /*!< pipe data structure for synchronous data error codes */
  #else
 -- 
-2.40.0
+2.42.0
 

@@ -15,7 +15,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '16'
 libxml2:
-- '2.11'
+- '2.12'
 lua:
 - '5'
 macos_machine:
