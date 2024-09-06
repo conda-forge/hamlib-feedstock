@@ -1,5 +1,7 @@
 c_compiler:
 - vs2019
+c_stdlib:
+- vs
 channel_sources:
 - conda-forge
 channel_targets:
@@ -7,10 +9,12 @@ channel_targets:
 cxx_compiler:
 - vs2019
 libxml2:
-- '2.12'
+- '2'
 lua:
 - '5'
 m2w64_c_compiler:
+- m2w64-toolchain
+m2w64_c_stdlib:
 - m2w64-toolchain
 m2w64_cxx_compiler:
 - m2w64-toolchain
@@ -24,3 +28,6 @@ target_platform:
 - win-64
 tk:
 - '8.6'
+zip_keys:
+- - python
+  - channel_sources
