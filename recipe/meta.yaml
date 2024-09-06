@@ -1,6 +1,6 @@
 {% set version = "4.5.5" %}
 {% set soversion = "4" %}
-{% set build = 3 %}
+{% set build = 4 %}
 {% set posix = 'm2-' if win else '' %}
 {% set library = "Library/" if win else "" %}
 
@@ -26,8 +26,10 @@ requirements:
   build:
     # need default compiler on Windows too (MSVC) for generating import lib
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - {{ compiler('m2w64_c') }}  # [win]
+    - {{ stdlib("m2w64_c") }}    # [win]
     - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}autoconf
     - {{ posix }}automake  # [unix]
@@ -58,8 +60,10 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - {{ compiler('m2w64_c') }}  # [win]
+        - {{ stdlib("m2w64_c") }}    # [win]
         - {{ compiler('m2w64_cxx') }}  # [win]
       host:
         - libusb
@@ -88,6 +92,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
         - libxml2
@@ -141,6 +146,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
         - lua
@@ -161,6 +167,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
         - perl
@@ -180,6 +187,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
         # conda-build needs native python to make .pyc files
         - python  # [build_platform != target_platform]
       host:
@@ -202,6 +210,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
         - tk
@@ -228,7 +237,6 @@ outputs:
     requirements:
       run:
         - __linux  # [linux]
-        - __osx  # [osx]
         - __win  # [win]
         - hamlib {{ version }}
         - hamlib-lua {{ version }}
