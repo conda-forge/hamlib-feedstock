@@ -37,3 +37,5 @@ tk:
 zip_keys:
 - - python
   - channel_sources
+zlib:
+- '1'
