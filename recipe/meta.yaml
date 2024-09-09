@@ -53,7 +53,8 @@ requirements:
     - python
     - readline  # [unix]
     - tk
-    - zlib  # [linux]
+    # pkgconfig link dep of libxml2, not actually linked against
+    - zlib
 
 outputs:
   - name: libhamlib{{ soversion }}
@@ -211,7 +212,6 @@ outputs:
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
         - tk
-        - zlib  # [linux]
       run:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
     files:
