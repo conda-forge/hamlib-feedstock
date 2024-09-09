@@ -60,9 +60,9 @@ outputs:
   - name: libhamlib{{ soversion }}
     requirements:
       build:
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
-        - {{ compiler('cxx') }}
+        - {{ compiler('c') }}  # [not win]
+        - {{ stdlib("c") }}  # [not win]
+        - {{ compiler('cxx') }}  # [not win]
         - {{ compiler('m2w64_c') }}  # [win]
         - {{ stdlib("m2w64_c") }}    # [win]
         - {{ compiler('m2w64_cxx') }}  # [win]
@@ -90,8 +90,10 @@ outputs:
         - {{ pin_subpackage('libhamlib' + soversion, max_pin=False) }}
     requirements:
       build:
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
+        - {{ compiler('c') }}  # [not win]
+        - {{ stdlib("c") }}  # [not win]
+        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ stdlib("m2w64_c") }}    # [win]
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
         - libxml2
@@ -143,8 +145,10 @@ outputs:
         - {{ pin_subpackage('libhamlib' + soversion, max_pin=False) }}
     requirements:
       build:
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
+        - {{ compiler('c') }}  # [not win]
+        - {{ stdlib("c") }}  # [not win]
+        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ stdlib("m2w64_c") }}    # [win]
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
         - lua
@@ -164,8 +168,10 @@ outputs:
         - {{ pin_subpackage('libhamlib' + soversion, max_pin=False) }}
     requirements:
       build:
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
+        - {{ compiler('c') }}  # [not win]
+        - {{ stdlib("c") }}  # [not win]
+        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ stdlib("m2w64_c") }}    # [win]
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
         - perl
@@ -184,8 +190,10 @@ outputs:
         - {{ pin_subpackage('libhamlib' + soversion, max_pin=False) }}
     requirements:
       build:
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
+        - {{ compiler('c') }}  # [not win]
+        - {{ stdlib("c") }}  # [not win]
+        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ stdlib("m2w64_c") }}    # [win]
         # conda-build needs native python to make .pyc files
         - python  # [build_platform != target_platform]
       host:
@@ -207,8 +215,10 @@ outputs:
         - {{ pin_subpackage('libhamlib' + soversion, max_pin=False) }}
     requirements:
       build:
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
+        - {{ compiler('c') }}  # [not win]
+        - {{ stdlib("c") }}  # [not win]
+        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ stdlib("m2w64_c") }}    # [win]
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
         - tk
