@@ -54,7 +54,7 @@ requirements:
     - readline  # [unix]
     - tk
     # pkgconfig link dep of libxml2, not actually linked against
-    - zlib
+    - zlib *
 
 outputs:
   - name: libhamlib{{ soversion }}
