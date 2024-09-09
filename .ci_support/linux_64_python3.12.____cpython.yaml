@@ -43,5 +43,3 @@ zip_keys:
   - cdt_name
 - - python
   - channel_sources
-zlib:
-- '1'
