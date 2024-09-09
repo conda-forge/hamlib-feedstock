@@ -2,18 +2,14 @@
 
 set -ex
 
+if [[ "$target_platform" == win-* ]]; then
+  export PREFIX=${PREFIX}/Library
+fi
+
 # Get an updated config.sub and config.guess
 cp $BUILD_PREFIX/share/gnuconfig/config.* build-aux/
 
 if [[ "$target_platform" == win-* ]]; then
-    # reset compiler to m2w64-toolchain since MSVC is also activated
-    # (MSVC is needed later to generate the import lib)
-    export CC=gcc.exe
-    export CXX=g++.exe
-    export PATH="$PREFIX/bin:$BUILD_PREFIX/Library/bin:$SRC_DIR:$PATH"
-    # set default include and library dirs for Windows build
-    export CPPFLAGS="$CPPFLAGS -isystem $PREFIX/include"
-    export LDFLAGS="$LDFLAGS -L$PREFIX/lib"
     # make sure host env is on PKG_CONFIG_PATH
     export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$PREFIX/lib/pkgconfig:$PREFIX/share/pkgconfig"
     # don't have libtool check if libraries should be linked, just link them
@@ -103,11 +99,6 @@ else
     sed -i "s/\(TCL_LIB_SPEC =\).*/\1 -l\$(TCL_LIB_FILE:.lib=)/g" bindings/Makefile
     # lua bindings need to link with lua library on Windows
     sed -i "s/\(Hamliblua_la_LIBADD = \)\(.*\)/\1\2 \$(LUA_LIB)/g" bindings/Makefile
-    # tell Perl's MakeMaker to use nmake since GNU make is not supported
-    #sed -i "/MAKEFILE=\"Hamlib-pl.mk\".*/aMAKE=\"nmake\" \\\\" bindings/Makefile
-    #sed -i "s/\$(MAKE).*\(-f Hamlib-pl.mk\)/env -u MAKE -u MAKEFLAGS nmake \1/g" bindings/Makefile
-    # debug ld for perl binding
-    #sed -i "/MAKEFILE=\"Hamlib-pl.mk\".*/aLDDLFLAGS=\"-mdll \\\\\$\$(LDFLAGS) -Wl,--verbose -Wl,--no-gc-sections\" \\\\" bindings/Makefile
 fi
 
 make V=1

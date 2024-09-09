@@ -34,11 +34,11 @@ requirements:
     - {{ posix }}autoconf
     - {{ posix }}automake  # [unix]
     - {{ posix }}automake-wrapper  # [win]
+    - {{ posix }}base  # [win]
     - gnuconfig
     - {{ posix }}libtool
-    - make  # [unix]
+    - {{ posix }}make
     - pkg-config
-    - posix  # [win]
     - {{ posix }}sed
     - swig
     # cross-compilation requirements
@@ -67,8 +67,6 @@ outputs:
         - {{ compiler('m2w64_cxx') }}  # [win]
       host:
         - libusb
-      run:
-        - m2w64-libwinpthread-git  # [win]
     files:
       - lib/libhamlib.so.{{ soversion }}*  # [linux]
       - lib/libhamlib++.so.{{ soversion }}*  # [linux]
@@ -99,7 +97,6 @@ outputs:
         - readline  # [unix]
       run:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
-        - m2w64-libwinpthread-git  # [win]
     files:
       - {{ library }}bin/ampctl*
       - {{ library }}bin/rigctl*
