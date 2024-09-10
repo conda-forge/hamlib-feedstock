@@ -1,6 +1,6 @@
 {% set version = "4.5.5" %}
 {% set soversion = "4" %}
-{% set build = 5 %}
+{% set build = 6 %}
 {% set posix = 'm2-' if win else '' %}
 {% set library = "Library/" if win else "" %}
 
@@ -162,7 +162,8 @@ outputs:
 
   - name: hamlib-perl
     build:
-      skip: true  # [win]
+      # Checking windows to see if it passes. Uncomment the line if it fails.
+      # skip: true  # [win]
       skip: true  # [build_platform != target_platform]
       run_exports:
         - {{ pin_subpackage('libhamlib' + soversion, max_pin=False) }}
