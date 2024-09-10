@@ -1,6 +1,6 @@
 {% set version = "4.5.5" %}
 {% set soversion = "4" %}
-{% set build = 4 %}
+{% set build = 5 %}
 {% set posix = 'm2-' if win else '' %}
 {% set library = "Library/" if win else "" %}
 
@@ -34,11 +34,11 @@ requirements:
     - {{ posix }}autoconf
     - {{ posix }}automake  # [unix]
     - {{ posix }}automake-wrapper  # [win]
+    - {{ posix }}base  # [win]
     - gnuconfig
     - {{ posix }}libtool
-    - make  # [unix]
+    - {{ posix }}make
     - pkg-config
-    - posix  # [win]
     - {{ posix }}sed
     - swig
     # cross-compilation requirements
@@ -53,22 +53,21 @@ requirements:
     - python
     - readline  # [unix]
     - tk
-    - zlib  # [linux]
+    # pkgconfig link dep of libxml2, not actually linked against
+    - zlib *
 
 outputs:
   - name: libhamlib{{ soversion }}
     requirements:
       build:
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
-        - {{ compiler('cxx') }}
+        - {{ compiler('c') }}  # [not win]
+        - {{ stdlib("c") }}  # [not win]
+        - {{ compiler('cxx') }}  # [not win]
         - {{ compiler('m2w64_c') }}  # [win]
         - {{ stdlib("m2w64_c") }}    # [win]
         - {{ compiler('m2w64_cxx') }}  # [win]
       host:
         - libusb
-      run:
-        - m2w64-libwinpthread-git  # [win]
     files:
       - lib/libhamlib.so.{{ soversion }}*  # [linux]
       - lib/libhamlib++.so.{{ soversion }}*  # [linux]
@@ -91,15 +90,16 @@ outputs:
         - {{ pin_subpackage('libhamlib' + soversion, max_pin=False) }}
     requirements:
       build:
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
+        - {{ compiler('c') }}  # [not win]
+        - {{ stdlib("c") }}  # [not win]
+        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ stdlib("m2w64_c") }}    # [win]
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
         - libxml2
         - readline  # [unix]
       run:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
-        - m2w64-libwinpthread-git  # [win]
     files:
       - {{ library }}bin/ampctl*
       - {{ library }}bin/rigctl*
@@ -145,8 +145,10 @@ outputs:
         - {{ pin_subpackage('libhamlib' + soversion, max_pin=False) }}
     requirements:
       build:
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
+        - {{ compiler('c') }}  # [not win]
+        - {{ stdlib("c") }}  # [not win]
+        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ stdlib("m2w64_c") }}    # [win]
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
         - lua
@@ -166,8 +168,10 @@ outputs:
         - {{ pin_subpackage('libhamlib' + soversion, max_pin=False) }}
     requirements:
       build:
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
+        - {{ compiler('c') }}  # [not win]
+        - {{ stdlib("c") }}  # [not win]
+        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ stdlib("m2w64_c") }}    # [win]
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
         - perl
@@ -186,8 +190,10 @@ outputs:
         - {{ pin_subpackage('libhamlib' + soversion, max_pin=False) }}
     requirements:
       build:
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
+        - {{ compiler('c') }}  # [not win]
+        - {{ stdlib("c") }}  # [not win]
+        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ stdlib("m2w64_c") }}    # [win]
         # conda-build needs native python to make .pyc files
         - python  # [build_platform != target_platform]
       host:
@@ -209,12 +215,13 @@ outputs:
         - {{ pin_subpackage('libhamlib' + soversion, max_pin=False) }}
     requirements:
       build:
-        - {{ compiler('c') }}
-        - {{ stdlib("c") }}
+        - {{ compiler('c') }}  # [not win]
+        - {{ stdlib("c") }}  # [not win]
+        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ stdlib("m2w64_c") }}    # [win]
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
         - tk
-        - zlib  # [linux]
       run:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
     files:
