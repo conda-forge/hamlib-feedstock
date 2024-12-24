@@ -1,6 +1,6 @@
-{% set version = "4.5.5" %}
+{% set version = "4.6" %}
 {% set soversion = "4" %}
-{% set build = 5 %}
+{% set build = 0 %}
 {% set posix = 'm2-' if win else '' %}
 {% set library = "Library/" if win else "" %}
 
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/Hamlib/Hamlib/releases/download/{{ version }}/hamlib-{{ version }}.tar.gz
-  sha256: 601c89f32ed225e9527ade3d64d0d05d23202c05ae21ffa77e59d70ee4597fcd
+  sha256: 6f873579bc4e0ef4e540313ec2acd4f198b5510d7dd9397a4ae68fe8ff20d167
   patches:
     - 0001-Install-perl-bindings-to-vendor-location.patch
     - 0002-Fix-tcl-binding-output-name-on-macOS-end-in-.dylib.patch
@@ -263,18 +263,10 @@ about:
     - COPYING.LIB
   summary: 'Ham radio control library for rigs, rotators, tuners, and amplifiers'
   description: >
-    The Ham Radio Control Library (Hamlib, for short) is a project to provide
-    programs with a consistent Application Programming Interface (API) for
-    controlling the myriad of radios and rotators available to amateur radio
-    and communications users. Many Amateur Radio Transceivers come with serial
-    interfaces that allows software to control the radio. This project will
-    endeavour to provide shared libraries that greatly simplify the application
-    programmer's interaction with radio equipment and other controllable
-    devices such as rotators, switches, etc.
+    The Ham Radio Control Library (Hamlib, for short) is a project to provide programs with a consistent Application Programming Interface (API) for controlling the myriad of radios and rotators available to amateur radio and communications users. Many Amateur Radio Transceivers come with serial interfaces that allows software
+    to control the radio. This project will endeavour to provide shared libraries that greatly simplify the application programmer's interaction with radio equipment and other controllable devices such as rotators, switches, etc.
 
-    The Hamlib Wiki Supported Radios page,
-    https://github.com/Hamlib/Hamlib/wiki/Supported-Radios, contains a
-    snapshot of the supported radios at the time of the last Hamlib release.
+    The Hamlib Wiki Supported Radios page, https://github.com/Hamlib/Hamlib/wiki/Supported-Radios, contains a snapshot of the supported radios at the time of the last Hamlib release.
   doc_url: https://github.com/Hamlib/Hamlib/wiki/Documentation
   dev_url: https://github.com/Hamlib/Hamlib
 
