@@ -8,7 +8,7 @@ Subject: [PATCH] Fix tcl binding output name on macOS (end in .dylib).
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/bindings/Makefile.am b/bindings/Makefile.am
-index 72edebd3..0796f317 100644
+index bed383618..4880c0987 100644
 --- a/bindings/Makefile.am
 +++ b/bindings/Makefile.am
 @@ -150,7 +150,7 @@ DLL = hamlibtcl-$(PKG_VER)$(TCL_SHLIB_SUFFIX)
@@ -21,5 +21,5 @@ index 72edebd3..0796f317 100644
  
  hamlibtcl_ladir = $(tcldir)
 -- 
-2.42.0
+2.47.1
 

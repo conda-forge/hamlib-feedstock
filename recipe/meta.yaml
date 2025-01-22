@@ -18,6 +18,7 @@ source:
     - 0004-Add-include-guards-to-hamlib-config.h.patch
     - 0005-Fix-binding-compilation-on-Windows.patch
     - 0006-Add-missing-stdlib.h-include-needed-after-libxml2-2..patch
+    - 0007-Add-missing-misc.h-include-remove-incorrectly-and-st.patch
 
 build:
   number: {{ build }}

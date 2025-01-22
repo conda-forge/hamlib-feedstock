@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ryan Volz <ryan.volz@gmail.com>
+Date: Wed, 22 Jan 2025 17:42:50 -0500
+Subject: [PATCH] Add missing misc.h include, remove incorrectly and still
+ needed.
+
+Needed to define `PRIll`
+---
+ tests/memsave.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/memsave.c b/tests/memsave.c
+index 264bd42b4..baa843bb4 100644
+--- a/tests/memsave.c
++++ b/tests/memsave.c
+@@ -20,6 +20,7 @@
+  */
+ 
+ #include <hamlib/rig.h>
++#include "misc.h"
+ 
+ #ifdef HAVE_XML2
+ #  include <libxml/parser.h>
+-- 
+2.47.1
+
