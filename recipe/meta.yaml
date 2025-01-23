@@ -121,10 +121,10 @@ outputs:
       - {{ library }}lib/pkgconfig/hamlib.pc
     test:
       commands:
-        - test -f $PREFIX/include/hamlib/config.h  # [unix]
+        - test -f $PREFIX/include/hamlib/rig.h  # [unix]
         - test -f $PREFIX/lib/libhamlib${SHLIB_EXT}  # [unix]
         - test -f $PREFIX/lib/libhamlib++${SHLIB_EXT}  # [unix]
-        - if not exist %LIBRARY_PREFIX%/include/hamlib/config.h exit 1  # [win]
+        - if not exist %LIBRARY_PREFIX%/include/hamlib/rig.h exit 1  # [win]
         - if not exist %LIBRARY_LIB%/hamlib.lib exit 1  # [win]
         - if not exist %LIBRARY_LIB%/hamlib++.lib exit 1  # [win]
         - if not exist %LIBRARY_LIB%/libhamlib.dll.a exit 1  # [win]
