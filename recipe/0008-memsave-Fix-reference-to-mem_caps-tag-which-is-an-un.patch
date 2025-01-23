@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ryan Volz <ryan.volz@gmail.com>
+Date: Thu, 23 Jan 2025 11:39:59 -0500
+Subject: [PATCH] memsave: Fix reference to mem_caps->tag which is an unsigned
+ not array.
+
+---
+ tests/memsave.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/memsave.c b/tests/memsave.c
+index baa843bb4..6b06f378f 100644
+--- a/tests/memsave.c
++++ b/tests/memsave.c
+@@ -281,7 +281,7 @@ int dump_xml_chan(RIG *rig,
+         xmlNewProp(node, (unsigned char *) "flags", (unsigned char *) attrbuf);
+     }
+ 
+-    if (mem_caps->tag[0] != 0)
++    if (mem_caps->tag)
+     {
+         SNPRINTF(attrbuf, sizeof(attrbuf), "%s", chan.tag);
+         xmlNewProp(node, (unsigned char *) "tag", (unsigned char *) attrbuf);
+-- 
+2.47.1
+

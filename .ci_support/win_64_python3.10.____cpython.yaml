@@ -34,6 +34,3 @@ target_platform:
 - win-64
 tk:
 - '8.6'
-zip_keys:
-- - python
-  - channel_sources

@@ -14,7 +14,7 @@ Lua bindings.
  2 files changed, 6 insertions(+)
 
 diff --git a/bindings/hamlib.swg b/bindings/hamlib.swg
-index 05284c28..b9df403f 100644
+index 05284c282..b9df403f0 100644
 --- a/bindings/hamlib.swg
 +++ b/bindings/hamlib.swg
 @@ -220,6 +220,8 @@
@@ -27,10 +27,10 @@ index 05284c28..b9df403f 100644
  
  %include <hamlib/riglist.h>
 diff --git a/bindings/ignore.swg b/bindings/ignore.swg
-index 37d6c96d..330a44bb 100644
+index 25c570377..8b358de01 100644
 --- a/bindings/ignore.swg
 +++ b/bindings/ignore.swg
-@@ -219,5 +219,9 @@
+@@ -226,5 +226,9 @@
  %ignore Rig::set_level(char const *,int,vfo_t);
  %ignore Rig::set_parm(setting_t,int);
  %ignore Rig::set_parm(char const *,int);
@@ -41,5 +41,5 @@ index 37d6c96d..330a44bb 100644
  #endif
  
 -- 
-2.42.0
+2.47.1
 
