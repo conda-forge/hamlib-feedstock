@@ -20,7 +20,7 @@ source:
     - 0006-Add-missing-stdlib.h-include-needed-after-libxml2-2..patch
     - 0007-Add-missing-misc.h-include-remove-incorrectly-and-st.patch
     - 0008-memsave-Fix-reference-to-mem_caps-tag-which-is-an-un.patch
-    - 0009-Fix-RCCOMPILE-to-pass-preprocessor-arguments-through.patch
+    - 0009-Change-RCCOMPILE-to-not-include-CPPFLAGS.patch
 
 build:
   number: {{ build }}
