@@ -28,6 +28,11 @@ if [[ "$target_platform" == osx-* ]]; then
     export LDFLAGS="$LDFLAGS -undefined dynamic_lookup"
 fi
 
+# sanitize CPPFLAGS provided by compiler activation by removing "-O2"
+# which gets interpreted as an argument for output type when using the windres
+# command to compile an rc file on Windows
+CPPFLAGS="$(echo $CPPFLAGS | sed 's/-O2 //g')"
+
 configure_args=(
     --prefix="$PREFIX"
     --disable-static
