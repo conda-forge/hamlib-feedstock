@@ -19,6 +19,7 @@ source:
     - 0005-Fix-binding-compilation-on-Windows.patch
     - 0006-Add-missing-stdlib.h-include-needed-after-libxml2-2..patch
     - 0007-Add-missing-misc.h-include-remove-incorrectly-and-st.patch
+    - 0008-memsave-Fix-reference-to-mem_caps-tag-which-is-an-un.patch
 
 build:
   number: {{ build }}
