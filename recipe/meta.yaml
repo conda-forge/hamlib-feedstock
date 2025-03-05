@@ -1,6 +1,6 @@
 {% set version = "4.6.2" %}
 {% set soversion = "4" %}
-{% set build = 0 %}
+{% set build = 1 %}
 {% set posix = 'm2-' if win else '' %}
 {% set library = "Library/" if win else "" %}
 
@@ -247,6 +247,7 @@ outputs:
     requirements:
       run:
         - __linux  # [linux]
+        - __osx  # [osx]
         - __win  # [win]
         - hamlib {{ version }}
         - hamlib-lua {{ version }}
