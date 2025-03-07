@@ -1,6 +1,6 @@
 {% set version = "4.6.2" %}
 {% set soversion = "4" %}
-{% set build = 1 %}
+{% set build = 2 %}
 {% set posix = 'm2-' if win else '' %}
 {% set library = "Library/" if win else "" %}
 
@@ -14,13 +14,12 @@ source:
   patches:
     - 0001-Install-perl-bindings-to-vendor-location.patch
     - 0002-Fix-tcl-binding-output-name-on-macOS-end-in-.dylib.patch
-    - 0003-rig.h-Define-hamlib_port-using-HAVE_WINDOWS_H-to-mat.patch
-    - 0004-Add-include-guards-to-hamlib-config.h.patch
-    - 0005-Fix-binding-compilation-on-Windows.patch
-    - 0006-Add-missing-stdlib.h-include-needed-after-libxml2-2..patch
-    - 0007-Add-missing-misc.h-include-remove-incorrectly-and-st.patch
-    - 0008-memsave-Fix-reference-to-mem_caps-tag-which-is-an-un.patch
-    - 0009-Change-RCCOMPILE-to-not-include-CPPFLAGS.patch
+    - 0003-Add-include-guards-to-hamlib-config.h.patch
+    - 0004-Fix-binding-compilation-on-Windows.patch
+    - 0005-Add-missing-stdlib.h-include-needed-after-libxml2-2..patch
+    - 0006-Add-missing-misc.h-include-remove-incorrectly-and-st.patch
+    - 0007-memsave-Fix-reference-to-mem_caps-tag-which-is-an-un.patch
+    - 0008-Change-RCCOMPILE-to-not-include-CPPFLAGS.patch
 
 build:
   number: {{ build }}
