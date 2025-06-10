@@ -9,7 +9,7 @@ channel_targets:
 cxx_compiler:
 - vs2019
 libxml2:
-- '2'
+- '2.13'
 lua:
 - '5'
 m2w64_c_compiler:
