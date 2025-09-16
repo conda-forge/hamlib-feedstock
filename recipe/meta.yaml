@@ -1,6 +1,6 @@
 {% set version = "4.6.2" %}
 {% set soversion = "4" %}
-{% set build = 2 %}
+{% set build = 3 %}
 {% set posix = 'm2-' if win else '' %}
 {% set library = "Library/" if win else "" %}
 
@@ -49,7 +49,7 @@ requirements:
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
   host:
     - libusb
-    - libxml2
+    - libxml2-devel
     - lua
     - perl  # [not win and build_platform == target_platform]
     - python
@@ -98,7 +98,7 @@ outputs:
         - {{ stdlib("m2w64_c") }}    # [win]
       host:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
-        - libxml2
+        - libxml2-devel
         - readline  # [unix]
       run:
         - {{ pin_subpackage('libhamlib' + soversion, exact=True) }}
