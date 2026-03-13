@@ -9,10 +9,10 @@ This ensures that those arguments are not read as flags for windres.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/Makefile.am b/src/Makefile.am
-index 5c484f971..37014f684 100755
+index 0e940b317..9a153008a 100755
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
-@@ -46,7 +46,7 @@ hamlibdatetime.h: FORCE
+@@ -49,7 +49,7 @@ hamlibdatetime.h: FORCE
  		test -f $(srcdir)/$(@F) || cp $(srcdir)/$(@F).in $(srcdir)/$(@F) ;\
  	fi
  
@@ -22,5 +22,5 @@ index 5c484f971..37014f684 100755
  LTRCCOMPILE = $(LIBTOOL) --mode=compile --tag=RC $(RCCOMPILE)
  
 -- 
-2.47.1
+2.51.0
 

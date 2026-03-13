@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ryan Volz <ryan.volz@gmail.com>
+Date: Fri, 13 Mar 2026 13:00:01 -0400
+Subject: [PATCH] Add missing <ctype.h> to define `tolower` used in
+ tests/memsave.c
+
+---
+ tests/memsave.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tests/memsave.c b/tests/memsave.c
+index 6b06f378f..219d1c0b7 100644
+--- a/tests/memsave.c
++++ b/tests/memsave.c
+@@ -19,6 +19,8 @@
+  *
+  */
+ 
++#include <ctype.h>
++
+ #include <hamlib/rig.h>
+ #include "misc.h"
+ 
+-- 
+2.51.0
+
