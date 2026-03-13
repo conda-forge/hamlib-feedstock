@@ -22,5 +22,5 @@ index 264bd42b4..baa843bb4 100644
  #ifdef HAVE_XML2
  #  include <libxml/parser.h>
 -- 
-2.47.1
+2.51.0
 

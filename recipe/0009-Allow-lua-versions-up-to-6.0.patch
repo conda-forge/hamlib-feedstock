@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ryan Volz <ryan.volz@gmail.com>
+Date: Fri, 13 Mar 2026 11:49:43 -0400
+Subject: [PATCH] Allow lua versions up to 6.0
+
+Lua seems to follow semver, so allow any Lua of version 5.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 43c3b18ce..65df10d4c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -683,7 +683,7 @@ AC_MSG_RESULT([$cf_with_lua_binding])
+ dnl AX_LUA_DEVEL from macros/ax_lua_devel.m4
+ AS_IF([test x"${cf_with_lua_binding}" = "xyes"],[
+ 
+-    AX_PROG_LUA([5.2], [5.5])
++    AX_PROG_LUA([5.2], [6.0])
+     AX_LUA_HEADERS
+     AX_LUA_LIBS
+ 
+-- 
+2.51.0
+

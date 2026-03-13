@@ -8,10 +8,10 @@ Subject: [PATCH] Add include guards to hamlib/config.h
  1 file changed, 9 insertions(+)
 
 diff --git a/configure.ac b/configure.ac
-index 609db450d..bdf5c6ee7 100644
+index bc720b7dc..43c3b18ce 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -859,6 +859,15 @@ AC_SUBST([AMP_BACKENDEPS])
+@@ -865,6 +865,15 @@ AC_SUBST([AMP_BACKENDEPS])
  ## Final output ##
  ## ------------ ##
  
@@ -28,5 +28,5 @@ index 609db450d..bdf5c6ee7 100644
  AC_SUBST([AM_CPPFLAGS])
  AC_SUBST([AM_CFLAGS])
 -- 
-2.47.1
+2.51.0
 
