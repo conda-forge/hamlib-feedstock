@@ -21,6 +21,7 @@ source:
     - 0007-memsave-Fix-reference-to-mem_caps-tag-which-is-an-un.patch
     - 0008-Change-RCCOMPILE-to-not-include-CPPFLAGS.patch
     - 0009-Allow-lua-versions-up-to-6.0.patch
+    - 0010-Add-missing-ctype.h-to-define-tolower-used-in-tests-.patch
 
 build:
   number: {{ build }}
