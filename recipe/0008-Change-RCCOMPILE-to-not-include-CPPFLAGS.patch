@@ -9,12 +9,12 @@ This ensures that those arguments are not read as flags for windres.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/Makefile.am b/src/Makefile.am
-index 0e940b317..9a153008a 100755
+index 766fd95b9..818d7f595 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
-@@ -49,7 +49,7 @@ hamlibdatetime.h: FORCE
- 		test -f $(srcdir)/$(@F) || cp $(srcdir)/$(@F).in $(srcdir)/$(@F) ;\
- 	fi
+@@ -52,7 +52,7 @@ hamlibdatetime.h: FORCE
+ 
+ snapshot_data.o rig.o: hamlibdatetime.h
  
 -RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS)
 +RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS)

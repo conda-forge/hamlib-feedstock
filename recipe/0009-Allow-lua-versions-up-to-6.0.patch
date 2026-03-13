@@ -9,10 +9,10 @@ Lua seems to follow semver, so allow any Lua of version 5.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure.ac b/configure.ac
-index 43c3b18ce..65df10d4c 100644
+index 1b0b1fa0d..b5ea03bda 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -683,7 +683,7 @@ AC_MSG_RESULT([$cf_with_lua_binding])
+@@ -710,7 +710,7 @@ AC_MSG_RESULT([$cf_with_lua_binding])
  dnl AX_LUA_DEVEL from macros/ax_lua_devel.m4
  AS_IF([test x"${cf_with_lua_binding}" = "xyes"],[
  
