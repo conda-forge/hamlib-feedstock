@@ -8,10 +8,10 @@ Subject: [PATCH] Install perl bindings to vendor location
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/bindings/Makefile.am b/bindings/Makefile.am
-index 11ecea1ec..a8cefff95 100644
+index f74480938..051c41fa7 100644
 --- a/bindings/Makefile.am
 +++ b/bindings/Makefile.am
-@@ -75,7 +75,7 @@ distcheck-perl: Hamlib-pl.mk
+@@ -85,7 +85,7 @@ distcheck-perl: Hamlib-pl.mk
  	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -f Hamlib-pl.mk distcheck
  
  install-perl: Hamlib-pl.mk

@@ -10,13 +10,13 @@ Needed to define `PRIll`
  1 file changed, 1 insertion(+)
 
 diff --git a/tests/memsave.c b/tests/memsave.c
-index 264bd42b4..baa843bb4 100644
+index fd7b37f3e..0b7e2aaf4 100644
 --- a/tests/memsave.c
 +++ b/tests/memsave.c
 @@ -20,6 +20,7 @@
   */
  
- #include <hamlib/rig.h>
+ #include "hamlib/rig.h"
 +#include "misc.h"
  
  #ifdef HAVE_XML2

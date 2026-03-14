@@ -9,7 +9,7 @@ Subject: [PATCH] Add missing <ctype.h> to define `tolower` used in
  1 file changed, 2 insertions(+)
 
 diff --git a/tests/memsave.c b/tests/memsave.c
-index 6b06f378f..219d1c0b7 100644
+index 8c8004278..2066e15f1 100644
 --- a/tests/memsave.c
 +++ b/tests/memsave.c
 @@ -19,6 +19,8 @@
@@ -18,7 +18,7 @@ index 6b06f378f..219d1c0b7 100644
  
 +#include <ctype.h>
 +
- #include <hamlib/rig.h>
+ #include "hamlib/rig.h"
  #include "misc.h"
  
 -- 

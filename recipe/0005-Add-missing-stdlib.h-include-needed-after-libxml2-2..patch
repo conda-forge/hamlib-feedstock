@@ -9,12 +9,12 @@ Subject: [PATCH] Add missing stdlib.h include, needed after libxml2 2.12
  1 file changed, 2 insertions(+)
 
 diff --git a/tests/memload.c b/tests/memload.c
-index e4e4eb689..96e13e248 100644
+index d30889477..d65bb572c 100644
 --- a/tests/memload.c
 +++ b/tests/memload.c
-@@ -22,6 +22,8 @@
+@@ -20,6 +20,8 @@
  
- #include <hamlib/rig.h>
+ #include "hamlib/rig.h"
  
 +#include <stdlib.h>
 +
