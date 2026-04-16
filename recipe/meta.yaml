@@ -1,6 +1,6 @@
-{% set version = "4.7.0" %}
+{% set version = "4.7.1" %}
 {% set soversion = "4" %}
-{% set build = 1 %}
+{% set build = 0 %}
 {% set posix = 'm2-' if win else '' %}
 {% set library = "Library/" if win else "" %}
 
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/Hamlib/Hamlib/releases/download/{{ version }}/hamlib-{{ version }}.tar.gz
-  sha256: 24542b09cb2432458ba239b2ba8f5b7fb67cde64df6553f150e6eb8475a87a23
+  sha256: d197a08a3d5d936d7571ae573f745bbba619e88998742c8267e3fcb0fb3d5974
   patches:
     - 0001-Install-perl-bindings-to-vendor-location.patch
     - 0002-Fix-tcl-binding-output-name-on-macOS-end-in-.dylib.patch
