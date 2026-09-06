@@ -3,19 +3,19 @@ c_compiler:
 c_stdlib:
 - vs
 channel_sources:
-- conda-forge
+- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge main
 cxx_compiler:
 - vs2022
 libxml2_devel:
-- '2.14'
+- '2.15'
 lua:
 - '5'
 m2w64_c_compiler:
 - gcc
 m2w64_c_compiler_version:
-- '14'
+- '15'
 m2w64_c_stdlib:
 - m2w64-sysroot
 m2w64_c_stdlib_version:
@@ -23,14 +23,17 @@ m2w64_c_stdlib_version:
 m2w64_cxx_compiler:
 - gxx
 m2w64_cxx_compiler_version:
-- '14'
+- '15'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
+- 3.15.* *_cp315
 target_platform:
 - win-64
 tk:
 - '8.6'
+zip_keys:
+- - python
+  - channel_sources
