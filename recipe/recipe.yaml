@@ -52,6 +52,10 @@ outputs:
         - gnuconfig
         - ${{ posix }}libtool
         - ${{ posix }}make
+        # perl is run during build, so it needs to be a build dep,
+        # but also we need the version to be pinned so it matches the host
+        - if: not win and build_platform == target_platform
+          then: perl
         - pkg-config
         - ${{ posix }}sed
         # SWIG 4.5.0 dropped the Python 2 -> 3 compatibility shims that Hamlib's
