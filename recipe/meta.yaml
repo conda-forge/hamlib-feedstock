@@ -44,12 +44,17 @@ requirements:
     - {{ posix }}make
     - pkg-config
     - {{ posix }}sed
-    - swig
+    # SWIG 4.5.0 dropped the Python 2 -> 3 compatibility shims that Hamlib's
+    # generated bindings rely on, causing mismatched declaration
+    # errors. Pin below 4.5 until upstream Hamlib supports SWIG 4.5.
+    - swig <4.5
     # cross-compilation requirements
+    - libpython                              # [build_platform != target_platform]
     - lua                                 # [build_platform != target_platform]
     - python                              # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
   host:
+    - libpython
     - libusb
     - libxml2-devel
     - lua
