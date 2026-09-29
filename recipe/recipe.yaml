@@ -179,9 +179,14 @@ outputs:
             - rigctl
             - rigctlcom
             - rigctld
+            - rigctlsync
+            - rigctltcp
             - rigmem
             - rigsmtr
             - rigswr
+            - rigtestlibusb
+            - rigtestmcast
+            - rigtestmcastrx
             - rotctl
             - rotctld
           include:
@@ -195,7 +200,7 @@ outputs:
               then:
                 - Library/lib/libhamlib.dll.a
                 - Library/lib/libhamlib++.dll.a
-            - ${{ "Library/" if win }}lib/pkgconfig/libiio.pc
+            - ${{ "Library/" if win }}lib/pkgconfig/hamlib.pc
       - script:
           - ampctl --help
           - ampctld --help
