@@ -117,16 +117,16 @@ outputs:
           files:
             - if: linux
               then:
-                - lib/libhamlib.so.${{ soversion }}
-                - lib/libhamlib++.so.${{ soversion }}
+                - lib/libhamlib.so.${{ soversion }}*
+                - lib/libhamlib++.so.${{ soversion }}*
             - if: osx
               then:
-                - lib/libhamlib.${{ soversion }}.dylib
-                - lib/libhamlib++.${{ soversion }}.dylib
+                - lib/libhamlib.${{ soversion }}*.dylib
+                - lib/libhamlib++.${{ soversion }}*.dylib
             - if: win
               then:
-                - Library/bin/libhamlib-${{ soversion }}.dll
-                - Library/bin/libhamlib++-${{ soversion }}.dll
+                - Library/bin/libhamlib-${{ soversion }}*.dll
+                - Library/bin/libhamlib++-${{ soversion }}*.dll
 
   - package:
       name: hamlib
