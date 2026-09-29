@@ -72,16 +72,6 @@ fi
 # update configure script following patching
 autoreconf --force --install --verbose
 
-if [[ "$target_platform" == win-* ]]; then
-    # 2023/10: the automake-1.15 package provides a version of the py-compile
-    # script that is so old that it's missing a modification that is required
-    # to build on Python 3.12 (it tries to use the 'imp' module). Unfortunately
-    # Hamlib's sources also contain a version that is too old. So until the
-    # MSYS2 packages get updated, we include an update copy with the recipe
-    # and copy it over here after autoreconf "updates" the file from automake.
-    cp "$RECIPE_DIR/py-compile" build-aux/
-fi
-
 ./configure "${configure_args[@]}" || (cat config.log; false)
 
 if [[ "$target_platform" != win-* ]]; then
