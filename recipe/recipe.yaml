@@ -171,6 +171,7 @@ outputs:
             - ${{ stdlib("m2w64_c") }}
       host:
         - ${{ pin_subpackage("libhamlib" + soversion, exact=True) }}
+        - libusb
         - libxml2-devel
         - if: unix
           then: readline
