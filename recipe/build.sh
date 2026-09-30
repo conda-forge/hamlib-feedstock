@@ -41,8 +41,8 @@ configure_args=(
 )
 
 if [[ "$target_platform" == win-* ]]; then
-    PY_INCDIR=$(cygpath -u $($PYTHON -c "import os, sysconfig; print(os.path.join(sysconfig.get_config_var('prefix'), 'include'))"))
-    PY_LIBDIR=$(cygpath -u $($PYTHON -c "import os, sysconfig; print(sysconfig.get_config_var('prefix'))"))
+    PY_INCDIR=$(cygpath -u $($PYTHON -c "import sysconfig; print(sysconfig.get_path('include'))"))
+    PY_LIBDIR=$(cygpath -u $($PYTHON -c "import sysconfig; print(sysconfig.get_config_var('prefix'))"))
     PY_LIBNAME=$($PYTHON -c "import sysconfig; print('python'+sysconfig.get_config_var('VERSION'))")
     configure_args+=(
         LIBUSB_LIBS="-L$PREFIX/bin -lusb-1.0"
