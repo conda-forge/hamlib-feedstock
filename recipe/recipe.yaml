@@ -71,9 +71,6 @@ outputs:
             - cross-python_${{ target_platform }}
       host:
         - libpython
-        # tk not pinned to 8.6 for ppc64le, so migrate to version 9's libtcl-devel
-        - if: ppc64le
-          then: libtcl-devel
         - libusb
         - libxml2-devel
         - lua
@@ -82,8 +79,10 @@ outputs:
         - python
         - if: unix
           then: readline
-        - if: not ppc64le
-          then: tk
+        # this is the tcl dependency
+        # If tk pin ever moves into version 9, will need to migrate to
+        # split packaging (i.e. libtcl-devel)
+        - tk
         # pkgconfig link dep of libxml2, not actually linked against
         - zlib *
 
@@ -337,14 +336,9 @@ outputs:
             - ${{ stdlib("m2w64_c") }}
       host:
         - ${{ pin_subpackage("libhamlib" + soversion, exact=True) }}
-        - if: not ppc64le
-          then: tk
-          else: tcl-devel
+        - tk
       run:
         - ${{ pin_subpackage("libhamlib" + soversion, exact=True) }}
-        # tcl-devel missing a run_exports as of 9/30/2026
-        - if: ppc64le
-          then: ${{ pin_compatible("libtcl", upper_bound="x.x") }}
       run_exports:
         - ${{ pin_subpackage("libhamlib" + soversion, upper_bound=None) }}
     tests:

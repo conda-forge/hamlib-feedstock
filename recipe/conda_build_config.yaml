@@ -1,0 +1,4 @@
+# not globally pinned on ppc64le, but the new
+# version 9 packaging does not ship the needed lib/tclConfig.sh
+tk:    # [ppc64le]
+- 8.6  # [ppc64le]
