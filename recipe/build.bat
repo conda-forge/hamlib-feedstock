@@ -1,13 +1,17 @@
 @echo on
 
 :: Create conda_build.sh wrapper
-:: With pixi, environment is already activated - no need to source conda.sh
+:: With pixi, environment is already activated - but need to source
+:: the activate-g[cx][cx]*.sh script to ensure gcc/gxx env vars take priority
 :: With Miniforge/conda, we need to source conda.sh and activate
 echo # Conda/pixi activation wrapper                   > conda_build.sh
 echo if [ -f "D:/Miniforge/etc/profile.d/conda.sh" ]; then  >> conda_build.sh
 echo   source D:/Miniforge/etc/profile.d/conda.sh     >> conda_build.sh
 echo   conda activate "${PREFIX}"                     >> conda_build.sh
 echo   conda activate --stack "${BUILD_PREFIX}"       >> conda_build.sh
+echo else                                             >> conda_build.sh
+echo   source "${BUILD_PREFIX}/etc/conda/activate.d/activate-gcc_${build_platform}.sh" >> conda_build.sh
+echo   source "${BUILD_PREFIX}/etc/conda/activate.d/activate-gxx_${build_platform}.sh" >> conda_build.sh
 echo fi                                               >> conda_build.sh
 echo CONDA_PREFIX=${CONDA_PREFIX//\\//}               >> conda_build.sh
 type "%RECIPE_DIR%\build.sh"                          >> conda_build.sh
