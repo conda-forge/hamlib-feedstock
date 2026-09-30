@@ -197,11 +197,15 @@ outputs:
             - hamlib/rig.h
             - hamlib/*
           lib:
-            - hamlib
-            - hamlib++
+            - if: not win
+              then:
+                - hamlib
+                - hamlib++
           files:
             - if: win
               then:
+                - Library/lib/hamlib.lib
+                - Library/lib/hamlib++.lib
                 - Library/lib/libhamlib.dll.a
                 - Library/lib/libhamlib++.dll.a
             - ${{ "Library/" if win }}lib/pkgconfig/hamlib.pc
