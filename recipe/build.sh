@@ -67,6 +67,9 @@ else
         --with-perl-binding
         --with-perl-inc="$core_perl_dir/CORE"
     )
+    # Perl's lib/perl*/*/core_perl/Config.pm needs CC to be a full path
+    # so it can correctly find the $compilerroot which sets the sysroot
+    export CC="$BUILD_PREFIX/bin/$(basename -- $CC)"
 fi
 
 # update configure script following patching
