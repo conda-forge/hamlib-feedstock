@@ -336,8 +336,14 @@ outputs:
             - ${{ stdlib("m2w64_c") }}
       host:
         - ${{ pin_subpackage("libhamlib" + soversion, exact=True) }}
+        - if: not ppc64le
+          then: tk
+          else: tcl-devel
       run:
         - ${{ pin_subpackage("libhamlib" + soversion, exact=True) }}
+        # tcl-devel missing a run_exports as of 9/30/2026
+        - if: ppc64le
+          then: ${{ pin_compatible("libtcl", upper_bound="x.x") }}
       run_exports:
         - ${{ pin_subpackage("libhamlib" + soversion, upper_bound=None) }}
     tests:
